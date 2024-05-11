@@ -52,7 +52,10 @@ def change_password(request):
         # Check if new password matches confirm password
         if new_password == confirm_password:
             # Assuming you have a function or endpoint in your API to change password
-            api_url = f'http://127.0.0.1:8001/cliente/update/{email}/'
+            apiUrlMachine = "127.0.0.1:8001"
+            apiUrlMachine = "34.68.167.238:8080"
+
+            api_url = f'http://{apiUrlMachine}/cliente/update/{email}/'
             print(api_url)
             payload = {
                 'email': email,
