@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Auth0 ASR</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{%url 'index'%}"
+                >Home</a
+              >
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'logout' %}"
+                >Logout</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'profile' %}"
+                >Profile</a
+              >
+            </li>
+            {% else %}
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/login/auth0"
+                >Login</a
+              >
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1>Auth0 ASR</h1>
+      {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>
