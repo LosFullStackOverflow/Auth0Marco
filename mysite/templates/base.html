@@ -17,7 +17,7 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="{%url 'index'%}">Navbar</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -56,6 +56,14 @@
                 >Profile</a
               >
             </li>
+            <li class="nav-item">
+              <a
+                class="nav-link active"
+                aria-current="page"
+                href="{% url 'metaData' %}"
+                >Meta Data</a
+              >
+            </li>
             {% else %}
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="/login/auth0"
@@ -68,9 +76,6 @@
       </div>
     </nav>
 
-    <div class="container">
-      <h1>Auth0 ASR</h1>
-      {% block content %}{% endblock %}
-    </div>
+    <div class="container">{% block content %}{% endblock %}</div>
   </body>
 </html>

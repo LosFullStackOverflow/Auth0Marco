@@ -1,0 +1,24 @@
+{% extends "base.html" %} {% block content %} {% if user.is_authenticated %}
+<h1>MetaData</h1>
+{% if messages %}
+<ul>
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+<!-- Add buttons within a form -->
+<form method="post" action="{% url 'button_action' %}">
+  {% csrf_token %}
+  <button type="submit" name="action" value="button1">Cancelada</button>
+  <button type="submit" name="action" value="button2">
+    En espera de oferta
+  </button>
+  <button type="submit" name="action" value="button3">Oferta creada</button>
+  <button type="submit" name="action" value="button4">Oferta aceptada</button>
+  <button type="submit" name="action" value="button5">Finalizado</button>
+</form>
+{% else %}
+<h1>Debes iniciar sesión primero</h1>
+{% endif %} {% endblock %}
